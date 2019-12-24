@@ -27,7 +27,7 @@
 <div class="container">
 		<div class="row">
 			<div class="col-md-12">
-			<h5>修改密码</h5>
+			<h5>请输入新的密码</h5>
 			<form
 			action="../SelfInformation/modityPw"
 			method="get">

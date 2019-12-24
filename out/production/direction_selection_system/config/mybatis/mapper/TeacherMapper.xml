@@ -6,6 +6,7 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="gender" jdbcType="VARCHAR" property="gender" />
     <result column="introduce" jdbcType="VARCHAR" property="introduce" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    tId, name, gender, introduce
+    tId, name, gender, introduce, email
   </sql>
   <select id="selectByExample" parameterType="com.xiao.programmer.entity.TeacherExample" resultMap="BaseResultMap">
     select
@@ -100,9 +101,9 @@
   </delete>
   <insert id="insert" parameterType="com.xiao.programmer.entity.Teacher">
     insert into teacher (tId, name, gender, 
-      introduce)
+      introduce, email)
     values (#{tid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, 
-      #{introduce,jdbcType=VARCHAR})
+      #{introduce,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.xiao.programmer.entity.Teacher">
     insert into teacher
@@ -119,6 +120,9 @@
       <if test="introduce != null">
         introduce,
       </if>
+      <if test="email != null">
+        email,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="tid != null">
@@ -132,6 +136,9 @@
       </if>
       <if test="introduce != null">
         #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -156,6 +163,9 @@
       <if test="record.introduce != null">
         introduce = #{record.introduce,jdbcType=VARCHAR},
       </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -166,7 +176,8 @@
     set tId = #{record.tid,jdbcType=VARCHAR},
       name = #{record.name,jdbcType=VARCHAR},
       gender = #{record.gender,jdbcType=VARCHAR},
-      introduce = #{record.introduce,jdbcType=VARCHAR}
+      introduce = #{record.introduce,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -183,6 +194,9 @@
       <if test="introduce != null">
         introduce = #{introduce,jdbcType=VARCHAR},
       </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
     </set>
     where tId = #{tid,jdbcType=VARCHAR}
   </update>
@@ -190,7 +204,8 @@
     update teacher
     set name = #{name,jdbcType=VARCHAR},
       gender = #{gender,jdbcType=VARCHAR},
-      introduce = #{introduce,jdbcType=VARCHAR}
+      introduce = #{introduce,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR}
     where tId = #{tid,jdbcType=VARCHAR}
   </update>
 </mapper>

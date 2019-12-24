@@ -1,7 +1,6 @@
 package com.xiao.programmer.service;
 
 import com.xiao.programmer.dao.TeacherMapper;
-import com.xiao.programmer.entity.Leader;
 import com.xiao.programmer.entity.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

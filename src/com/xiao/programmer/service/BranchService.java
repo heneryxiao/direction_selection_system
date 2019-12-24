@@ -2,7 +2,6 @@ package com.xiao.programmer.service;
 
 import com.xiao.programmer.dao.BranchMapper;
 import com.xiao.programmer.entity.Branch;
-import com.xiao.programmer.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

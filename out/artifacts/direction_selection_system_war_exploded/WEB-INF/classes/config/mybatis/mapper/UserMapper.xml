@@ -180,6 +180,7 @@
       type = #{type,jdbcType=INTEGER}
     where uId = #{uid,jdbcType=VARCHAR}
   </update>
+    <!-- 查询用户列表 -->
     <select id="findList" parameterType="Map" resultType="User">
         <!-- select
         <include refid="Base_Column_List" />
@@ -187,5 +188,4 @@
         where uId = #{uid,jdbcType=VARCHAR} -->
         select * from user where uid like #{uid} limit #{offset},#{pageSize}
     </select>
-
 </mapper>

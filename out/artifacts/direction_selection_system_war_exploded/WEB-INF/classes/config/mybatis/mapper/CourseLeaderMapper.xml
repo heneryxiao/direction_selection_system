@@ -240,4 +240,5 @@
       introduce = #{introduce,jdbcType=VARCHAR}
     where cId = #{cid,jdbcType=VARCHAR}
   </update>
+
 </mapper>

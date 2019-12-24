@@ -79,8 +79,6 @@ public class SelfInformationController {
             model.setViewName("courseLeader/selfInformation");
         }
         if (type == 5) {
-            Teacher userWithType = (Teacher) request.getSession().getAttribute("userWithType");
-            String branchName = "null";
             model.setViewName("teacher/selfInformation");
         }
         if (type == 6) {
@@ -190,6 +188,19 @@ public class SelfInformationController {
             //更新session中的数据
             request.getSession().setAttribute("userWithType", userWithType);
         }
+        if (type == 5) {
+            Teacher userWithType = (Teacher) request.getSession().getAttribute("userWithType");
+            userWithType.setEmail(email);
+            //修改邮箱
+            if (teacherService.edit(userWithType) > 0) {
+                model.setViewName("teacher/selfInformation");
+            } else {
+                model.setViewName("fail");
+                return model;
+            }
+            //更新session中的数据
+            request.getSession().setAttribute("userWithType", userWithType);
+        }
         if (type == 6) {
             Student userWithType = (Student) request.getSession().getAttribute("userWithType");
             userWithType.setEmail(email);
@@ -289,7 +300,8 @@ public class SelfInformationController {
     @RequestMapping("/ModiIntroduce")
     public ModelAndView ModiIntroduce(@RequestParam("introduce") String introduce, ModelAndView model, HttpServletRequest request) {
         CourseLeader userWithType = (CourseLeader) request.getSession().getAttribute("userWithType");
-        userWithType.setIntroduce(introduce);
+        //EncodingTool：解决中文乱码
+        userWithType.setIntroduce(EncodingTool.encodeStr(introduce));
         //修改
         if (courseLeaderService.edit(userWithType) > 0) {
             model.setViewName("courseLeader/selfInformation");
@@ -302,6 +314,7 @@ public class SelfInformationController {
         request.getSession().setAttribute("userWithType", userWithType);
         return model;
     }
+
 
 }
 

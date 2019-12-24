@@ -94,7 +94,7 @@
                             <tr>
                                 <td>课程简介</td>
                                 <td>${userWithType.introduce }</td>
-                                <td><a class="btn btn-default"
+                                <td><a class="btn btn-default" id="introduce"
                                        href="../SelfInformation/jumpModiIntroduce">修改 </a></td>
                             </tr>
 

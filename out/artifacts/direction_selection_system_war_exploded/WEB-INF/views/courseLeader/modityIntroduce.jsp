@@ -43,7 +43,7 @@
                     <%--	<input type="text" name="introduce" class="form-control"
                                                  onkeyup="this.value=this.value.replace(/(^\s+)|(\s+$)/g,'');"
                                                  maxlength="200"/>		--%>
-                    <div class="col-md-3"><textarea name="introduce" cols="24" rows="10" ></textarea></div>
+                    <div class="col-md-3"><textarea name="introduce" cols="24" rows="10" >${userWithType.introduce }</textarea></div>
                     <div class="col-md-3"><input type="submit" class="btn btn-primary btn-wide login-btn" value="确定修改"/>
                     </div>
 

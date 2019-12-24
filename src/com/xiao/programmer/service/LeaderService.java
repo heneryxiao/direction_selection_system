@@ -2,7 +2,6 @@ package com.xiao.programmer.service;
 
 import com.xiao.programmer.dao.LeaderMapper;
 import com.xiao.programmer.entity.Leader;
-import com.xiao.programmer.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

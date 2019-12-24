@@ -71,12 +71,12 @@
                                        href="../SelfInformation/jumpModiPw">修改 </a></td>
                             </tr>
 
-<%--                            <tr>--%>
-<%--                                <td>邮箱</td>--%>
-<%--                                <td>${userWithType.email }</td>--%>
-<%--								<td><a class="btn btn-default"--%>
-<%--									   href="../SelfInformation/jumpModiEamil">修改 </a></td>--%>
-<%--                            </tr>--%>
+                            <tr>
+                                <td>邮箱</td>
+                                <td>${userWithType.email }</td>
+								<td><a class="btn btn-default"
+									   href="../SelfInformation/jumpModiEamil">修改 </a></td>
+                            </tr>
 
 
                         </table>

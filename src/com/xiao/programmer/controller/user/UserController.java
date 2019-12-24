@@ -1,4 +1,4 @@
-package com.xiao.programmer.controller;
+package com.xiao.programmer.controller.user;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import com.xiao.programmer.entity.Page;
+import com.xiao.programmer.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.util.StringUtil;
-import com.xiao.programmer.entity.User;
 import com.xiao.programmer.service.UserService;
 
 /**
@@ -49,7 +49,7 @@ public class UserController {
     @RequestMapping(value = "/get_list", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> get_list(
-    		@RequestParam(value = "uid", required = false, defaultValue = "") String uid, 
+    		@RequestParam(value = "uid", required = false, defaultValue = "") String uid,
     		Page page,
     		HttpServletRequest request) {
         Map<String, Object> ret = new HashMap<>();
@@ -62,7 +62,7 @@ public class UserController {
         ret.put("total", userService.getTotal());
         return ret;
     }
-    
+
     /**
      * 添加用户操作
      * @param user
@@ -104,7 +104,7 @@ public class UserController {
 			ret.put("msg", "类型不为数字!");
 			return ret;
 		}
-		
+
 		if(!(user.getType()==2||user.getType()==3)){
 			ret.put("type", "error");
 			ret.put("msg", "类型只能填写2或3");
@@ -119,10 +119,10 @@ public class UserController {
 		ret.put("msg", "添加成功");
 		return ret;
 	}
-    
+
     /**
 	 * 删除用户操作
-	 * @param user
+	 * @param
 	 * @return
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
@@ -148,7 +148,7 @@ public class UserController {
 		ret.put("msg", "删除成功");
 		return ret;
 	}
-	
+
 	/**
 	 * 编辑用户操作
 	 * @param user
@@ -197,12 +197,12 @@ public class UserController {
 			ret.put("type", "error");
 			ret.put("msg", "修改失败");
 			return ret;
-		} 
+		}
 		ret.put("type", "success");
 		ret.put("msg", "修改成功");
 		return ret;
 	}
-	
+
 //	@RequestMapping(value = "/get_list", method = RequestMethod.POST)
 //	@ResponseBody
 //	// @ResponseBody 把返回的数据转换成json对象再返回
@@ -220,7 +220,7 @@ public class UserController {
 //
 //	/**
 //	 * 添加用户操作
-//	 * 
+//	 *
 //	 * @param user
 //	 * @return
 //	 */
@@ -274,8 +274,8 @@ public class UserController {
 //    	ret.put("msg", "添加成功");
 //    	return ret;
 //    }
-	
-//	
+
+//
 //	/**
 //	 * 删除用户操作
 //	 * @param user
@@ -307,7 +307,7 @@ public class UserController {
 //		ret.put("msg", "删除成功");
 //		return ret;
 //	}
-//	
+//
 //	/**
 //	 * 编辑用户操作
 //	 * @param user
