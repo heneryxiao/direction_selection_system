@@ -32,8 +32,8 @@
                         <c:if test="${user.type == 2 || user.type == 3}">
                         // {"menuid": "14", "menuname": "方向负责人列表", "icon": "icon-exam", "url": ""},
                         </c:if>
-                        {"menuid": "15", "menuname": "老师列表", "icon": "icon-exam", "url": ""},
-                        {"menuid": "16", "menuname": "学生列表", "icon": "icon-exam", "url": ""},
+                        {"menuid": "15", "menuname": "老师列表", "icon": "icon-exam", "url": "../teacherList/list"},
+                        {"menuid": "16", "menuname": "学生列表", "icon": "icon-exam", "url": "../studentList/list"},
                         </c:if>
 
 

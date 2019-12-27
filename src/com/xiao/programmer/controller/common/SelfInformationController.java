@@ -315,6 +315,31 @@ public class SelfInformationController {
         return model;
     }
 
+    // 跳转修改老师介绍页面
+    @RequestMapping("/jumpModiTeacherIntroduce")
+    public ModelAndView jumpModiTeacherIntroduce(ModelAndView model) {
+        model.setViewName("teacher/modityTeacherIntroduce");
+        return model;
+    }
+
+    // 修改老师介绍
+    @RequestMapping("/ModiTeacherIntroduce")
+    public ModelAndView ModiTeacherIntroduce(@RequestParam("introduce") String introduce, ModelAndView model, HttpServletRequest request) {
+        Teacher userWithType = (Teacher) request.getSession().getAttribute("userWithType");
+        //EncodingTool：解决中文乱码
+        userWithType.setIntroduce(EncodingTool.encodeStr(introduce));
+        //修改
+        if (teacherService.edit(userWithType) > 0) {
+            model.setViewName("teacher/selfInformation");
+
+        } else {
+            model.setViewName("fail");
+            return model;
+        }
+        //更新session中的数据
+        request.getSession().setAttribute("userWithType", userWithType);
+        return model;
+    }
 
 }
 

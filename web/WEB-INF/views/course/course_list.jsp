@@ -34,7 +34,6 @@
 				{field:'chk',checkbox: true,width:50},
 				{field: 'courseid', title: '课程编号', width: 80, sortable: true},
 				{field: 'name', title: '课程名称', width: 80},
-				{field: 'introduce', title: '课程介绍', width: 500},
 	 		]], 
 	        toolbar: "#toolbar"
 	    }); 
@@ -71,9 +70,9 @@
             } else{
             	var ids = [];
             	$(selectRows).each(function(i, row){
-            		ids[i] = row.branchid;
+            		ids[i] = row.courseid;
             	});
-            	$.messager.confirm("消息提醒", "将删除与用户相关的所有数据，确认继续？", function(r){
+            	$.messager.confirm("消息提醒", "将删除与课程相关的所有数据，确认继续？", function(r){
             		if(r){
             			$.ajax({
 							type: "post",
@@ -152,7 +151,6 @@
 			onClose: function(){
 				$("#add_courseId").textbox('setValue', "");
 				$("#add_name").textbox('setValue', "");
-				$("#add_introduce").textbox('setValue', "");
 			}
 	    });
 	  	
@@ -212,7 +210,6 @@
 				//设置值
 				$("#edit_courseId").val(selectRow.courseid);
 				$("#edit_name").textbox('setValue', selectRow.name);
-				$("#edit_introduce").textbox('setValue', selectRow.introduce);
 			}
 	    });
 	   	
@@ -257,11 +254,6 @@
 	    			<td>课程名称:</td>
 	    			<td><input id="add_name" style="width: 200px; height: 30px;" class="easyui-textbox" type="text" name="name" data-options="required:true, missingMessage:'请填写课程名称'"  /></td>
 	    		</tr>
-				<tr>
-					<td>课程介绍:</td>
-					<td><input id="add_introduce" style="width: 200px; height: 30px;" class="easyui-textbox" type="text" name="introduce" data-options="required:true, missingMessage:'请填写课程介绍'"  /></td>
-				</tr>
-
 	    	</table>
 	    </form>
 	</div>
@@ -275,10 +267,6 @@
 				<tr>
 					<td>课程名称:</td>
 					<td><input id="edit_name" style="width: 200px; height: 30px;" class="easyui-textbox" type="text" name="name" data-options="required:true, missingMessage:'请填写课程名称'"  /></td>
-				</tr>
-				<tr>
-					<td>课程介绍:</td>
-					<td><input id="edit_introduce" style="width: 200px; height: 30px;" class="easyui-textbox" type="text" name="introduce" data-options="required:true, missingMessage:'请填写课程介绍'"  /></td>
 				</tr>
 	    	</table>
 	    </form>

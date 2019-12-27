@@ -213,7 +213,7 @@
 			onBeforeOpen: function(){
 				var selectRow = $("#dataList").datagrid("getSelected");
 				//设置值
-				$("#edit_uid").textbox('setValue', selectRow.uid);
+				$("#edit_uid").val(selectRow.uid);
 				$("#edit_password").textbox('setValue', selectRow.password);
 				$("#edit_type").textbox('setValue', selectRow.type);
 			}
@@ -289,11 +289,12 @@
 		<a id="delete" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-some-delete',plain:true">删除</a>
 		用户名:<input id="search-username" class="easyui-textbox"/>	
 		<a id="search-btn" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">搜索</a>
-		<tr>
-		    <td><input type="file" id="upload" name="upload" value="" /></td>
-		    <td><button οnclick="uploadFile()">上传</button></td>
-		    <td><button οnclick="OutputExce()">导出</button></td>
-		</tr>
+<%--			上传       --%>
+<%--		<tr>--%>
+<%--		    <td><input type="file" id="upload" name="upload" value="" /></td>--%>
+<%--		    <td><button οnclick="uploadFile()">上传</button></td>--%>
+<%--		    <td><button οnclick="OutputExce()">导出</button></td>--%>
+<%--		</tr>--%>
 		</div>
 	</div>
 	
@@ -346,13 +347,8 @@
 	<!-- 修改窗口 -->
 	<div id="editDialog" style="padding: 10px">
     	<form id="editForm" method="post">
+			<input type="hidden" name="uid" id="edit_uid">
 	    	<table id="editTable" border=0 cellpadding="8" >
-	    		<tr>
-	    			<td>用户名:</td>
-	    			<td>
-	    				<input id="edit_uid"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="uid" data-options="required:true, validType:'repeat', missingMessage:'请填写用户名'" />
-	    			</td>
-	    		</tr>
 	    		<tr>
 	    			<td>密码:</td>
 	    			<td><input id="edit_password" style="width: 200px; height: 30px;" class="easyui-textbox" type="password" name="password" data-options="required:true, missingMessage:'请填写密码'" /></td>

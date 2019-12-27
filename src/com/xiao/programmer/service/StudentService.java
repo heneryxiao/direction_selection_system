@@ -2,10 +2,12 @@ package com.xiao.programmer.service;
 
 import com.xiao.programmer.dao.StudentMapper;
 import com.xiao.programmer.entity.Student;
+import com.xiao.programmer.entity.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Henery
@@ -35,6 +37,21 @@ public class StudentService {
     //编辑修改
     public int edit(Student student) {
         return studentMapper.updateByPrimaryKeySelective(student);
+    }
+
+    //查询列表（带模糊、分页）
+    public List<Student> findList(Map queryMap){
+        return studentMapper.findList(queryMap);
+    }
+
+    //获取学生个数
+    public long getTotal() {
+        return studentMapper.countByExample(null);
+    }
+
+    //带上方向信息的查询列表（带模糊、分页）
+    public List<Student> findListWithBranch(Map queryMap) {
+        return studentMapper.findListWithBranch(queryMap);
     }
 
 }

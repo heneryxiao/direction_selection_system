@@ -77,6 +77,12 @@
 								<td><a class="btn btn-default"
 									   href="../SelfInformation/jumpModiEamil">修改 </a></td>
                             </tr>
+                            <tr>
+                                <td>老师简介</td>
+                                <td>${userWithType.introduce }</td>
+                                <td><a class="btn btn-default" id="introduce"
+                                       href="../SelfInformation/jumpModiTeacherIntroduce">修改 </a></td>
+                            </tr>
 
 
                         </table>

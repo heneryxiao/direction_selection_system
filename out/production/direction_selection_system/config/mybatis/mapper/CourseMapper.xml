@@ -4,7 +4,6 @@
   <resultMap id="BaseResultMap" type="com.xiao.programmer.entity.Course">
     <id column="courseId" jdbcType="VARCHAR" property="courseid" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="introduce" jdbcType="VARCHAR" property="introduce" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +64,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    courseId, name, introduce
+    courseId, name
   </sql>
   <select id="selectByExample" parameterType="com.xiao.programmer.entity.CourseExample" resultMap="BaseResultMap">
     select
@@ -98,10 +97,8 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.xiao.programmer.entity.Course">
-    insert into course (courseId, name, introduce
-      )
-    values (#{courseid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{introduce,jdbcType=VARCHAR}
-      )
+    insert into course (courseId, name)
+    values (#{courseid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.xiao.programmer.entity.Course">
     insert into course
@@ -112,9 +109,6 @@
       <if test="name != null">
         name,
       </if>
-      <if test="introduce != null">
-        introduce,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="courseid != null">
@@ -122,9 +116,6 @@
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="introduce != null">
-        #{introduce,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -143,9 +134,6 @@
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.introduce != null">
-        introduce = #{record.introduce,jdbcType=VARCHAR},
-      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -154,8 +142,7 @@
   <update id="updateByExample" parameterType="map">
     update course
     set courseId = #{record.courseid,jdbcType=VARCHAR},
-      name = #{record.name,jdbcType=VARCHAR},
-      introduce = #{record.introduce,jdbcType=VARCHAR}
+      name = #{record.name,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -166,16 +153,16 @@
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="introduce != null">
-        introduce = #{introduce,jdbcType=VARCHAR},
-      </if>
     </set>
     where courseId = #{courseid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xiao.programmer.entity.Course">
     update course
-    set name = #{name,jdbcType=VARCHAR},
-      introduce = #{introduce,jdbcType=VARCHAR}
+    set name = #{name,jdbcType=VARCHAR}
     where courseId = #{courseid,jdbcType=VARCHAR}
   </update>
+  <!-- 根据方向名称查询 -->
+  <select id="selectByName" parameterType="String" resultType="com.xiao.programmer.entity.Course">
+            SELECT * FROM course WHERE name = #{name}
+        </select>
 </mapper>

@@ -1,4 +1,4 @@
-package com.xiao.programmer.controller.leader;
+package com.xiao.programmer.controller.branch;
 
 import com.xiao.programmer.entity.Branch;
 import com.xiao.programmer.entity.Course;
@@ -33,7 +33,7 @@ public class branchListController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list(ModelAndView model) {
-        model.setViewName("leader/branch_list");
+        model.setViewName("branch/branch_list");
         return model;
     }
 
@@ -78,18 +78,25 @@ public class branchListController {
             ret.put("msg", "涉及课程ID不能为空!");
             return ret;
         }
-        Course existCourse = courseService.findById(branch.getCourseid());
-        if (existCourse == null) {
-            ret.put("type", "error");
-            ret.put("msg", "所涉及的课程不存在");
-            return ret;
-        }
         Branch existBranch = branchService.findById(branch.getBranchid());
         if (existBranch != null) {
             ret.put("type", "error");
             ret.put("msg", "该方向ID已存在");
             return ret;
         }
+        existBranch = branchService.selectByName(branch.getName());
+        if (existBranch != null) {
+            ret.put("type", "error");
+            ret.put("msg", "该方向名称已存在");
+            return ret;
+        }
+        Course existCourse = courseService.findById(branch.getCourseid());
+        if (existCourse == null) {
+            ret.put("type", "error");
+            ret.put("msg", "所涉及的课程不存在");
+            return ret;
+        }
+
         //添加并判断
         if (branchService.add(branch) <= 0) {
             ret.put("type", "error");

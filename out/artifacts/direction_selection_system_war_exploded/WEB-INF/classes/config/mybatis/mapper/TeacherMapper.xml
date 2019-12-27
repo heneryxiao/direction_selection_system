@@ -208,4 +208,8 @@
       email = #{email,jdbcType=VARCHAR}
     where tId = #{tid,jdbcType=VARCHAR}
   </update>
+  <!-- 查询用户列表 -->
+  <select id="findList" parameterType="Map" resultType="com.xiao.programmer.entity.Teacher">
+    select * from teacher where tid like #{tid} limit #{offset},#{pageSize}
+  </select>
 </mapper>

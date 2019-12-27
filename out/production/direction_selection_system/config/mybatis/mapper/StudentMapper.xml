@@ -268,6 +268,16 @@
   </resultMap>
   <!-- 置空已选方向ID（退选） -->
   <update id="quitBySid">
-        UPDATE student SET branchid = NULL WHERE sId = #{sid}
-    </update>
+  UPDATE student SET branchid = NULL WHERE sId = #{sid}
+  </update>
+
+  <!-- 查询用户列表 -->
+  <select id="findList" parameterType="Map" resultType="com.xiao.programmer.entity.Student">
+    select * from student where sid like #{sid} limit #{offset},#{pageSize}
+  </select>
+
+  <!-- 获取专业信息(联合查询，附上课程信息) -->
+  <select id="findListWithBranch" resultMap="WithBranchResultMap">
+        SELECT s.sId, s.name, s.gender, s.profession, s.branchId, s.clazz, s.email, b.branchId, b.name as bname, b.courseId, b.selected, b.limited FROM student s LEFT JOIN branch b ON s.branchId = b.branchId where sid like #{sid} limit #{offset},#{pageSize}
+    </select>
 </mapper>

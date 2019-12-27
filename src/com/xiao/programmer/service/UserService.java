@@ -23,52 +23,32 @@ public class UserService {
         return userMapper.selectByPrimaryKey(uid);
     }
 
+    //查询列表（带模糊、分页）
     public List<User> findList(Map queryMap){
         return userMapper.findList(queryMap);
     }
 
-    /**
-     * 获取用户列表
-     * @return
-     */
+    //获取用户列表
     public List<User> getList() {
         return userMapper.selectByExample(null);
     }
 
-    /**
-     * 获取用户个数
-     * @return
-     */
+    //获取用户个数
     public long getTotal() {
         return userMapper.countByExample(null);
     }
 
-    /**
-     * 添加用户的操作
-     *
-     * @param user
-     * @return
-     */
+    //添加用户的操作
     public int add(User user) {
         return userMapper.insertSelective(user);
     }
 
-    /**
-     * 删除用户操作
-     *
-     * @param uid
-     * @return
-     */
+    //删除用户操作
     public int delete(String uid) {
         return userMapper.deleteByPrimaryKey(uid);
     }
 
-    /**
-     * 修改用户操作
-     *
-     * @param user
-     * @return
-     */
+    //修改用户操作
     public int edit(User user) {
 //		 return userMapper.updateByExample(user, null);
         return userMapper.updateByPrimaryKeySelective(user);

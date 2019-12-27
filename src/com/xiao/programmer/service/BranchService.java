@@ -54,10 +54,12 @@ public class BranchService {
     public Branch selectByName(String name) {
         return branchMapper.selectByName(name);
     }
+    //删除
     public int delete(String bid){
         return branchMapper.deleteByPrimaryKey(bid);
     }
 
+    //带上课程信息的查询列表
     public List<Branch> getListBySIdWithCourse() {
         return branchMapper.getListBySIdWithCourse();
     }
