@@ -72,11 +72,18 @@
                             </tr>
 
                             <tr>
+                                <td>所授课程</td>
+                                <td>${courseName }</td>
+                                <td>不可修改，默认null</td>
+                            </tr>
+
+                            <tr>
                                 <td>邮箱</td>
                                 <td>${userWithType.email }</td>
-								<td><a class="btn btn-default"
-									   href="../SelfInformation/jumpModiEamil">修改 </a></td>
+                                <td><a class="btn btn-default"
+                                       href="../SelfInformation/jumpModiEamil">修改 </a></td>
                             </tr>
+
                             <tr>
                                 <td>老师简介</td>
                                 <td>${userWithType.introduce }</td>

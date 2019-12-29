@@ -54,4 +54,9 @@ public class StudentService {
         return studentMapper.findListWithBranch(queryMap);
     }
 
+    //根据老师id查询所教的学生列表(附上方向信息)
+    public List<Student> selectStudentListWithBranchByTid(String tid) {
+        return studentMapper.selectStudentListWithBranchByTid(tid);
+    }
+
 }

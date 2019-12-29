@@ -69,7 +69,7 @@
                     "menus": [
                         {"menuid": "32", "menuname": "个人信息", "icon": "icon-exam", "url": "../SelfInformation/introduce"},
                         <c:if test="${user.type == 5}">
-                        {"menuid": "31", "menuname": "授课学生列表", "icon": "icon-exam", "url": ""},
+                        {"menuid": "31", "menuname": "授课学生列表", "icon": "icon-exam", "url": "../selectedStudentList/list"},
                         </c:if>
                         <c:if test="${user.type == 6}">
                         {"menuid": "33", "menuname": "选报信息", "icon": "icon-exam", "url": "../selectInformation/select"},

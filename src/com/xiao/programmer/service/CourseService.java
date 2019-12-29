@@ -43,4 +43,9 @@ public class CourseService {
     public int delete(String cid){
         return courseMapper.deleteByPrimaryKey(cid);
     }
+
+    //根据老师id查询老师所授课程
+    public Course findCourseByTid(String tid){
+        return courseMapper.findCourseByTid(tid);
+    }
 }

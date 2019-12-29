@@ -230,7 +230,7 @@
         </select>
   <!-- 获取专业信息(联合查询，附上课程信息) -->
   <select id="getListBySIdWithCourse" resultMap="WithCourseResultMap">
-        SELECT b.branchId, b.name, b.courseId, b.selected, b.limited, c.courseId, c.name as cname, c.introduce FROM branch b, course c WHERE b.courseId = c.courseId
+        SELECT b.branchId, b.name, b.courseId, b.selected, b.limited, c.courseId, c.name as cname FROM branch b, course c WHERE b.courseId = c.courseId
     </select>
   <resultMap id="WithCourseResultMap" type="com.xiao.programmer.entity.Branch">
     <id column="branchId" jdbcType="VARCHAR" property="branchid"/>
@@ -242,7 +242,6 @@
     <association property="course" javaType="com.xiao.programmer.entity.Course">
       <id column="courseId" jdbcType="VARCHAR" property="courseid" />
       <result column="cname" jdbcType="VARCHAR" property="name" />
-      <result column="introduce" jdbcType="VARCHAR" property="introduce" />
     </association>
   </resultMap>
 </mapper>

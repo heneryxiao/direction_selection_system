@@ -79,6 +79,13 @@ public class SelfInformationController {
             model.setViewName("courseLeader/selfInformation");
         }
         if (type == 5) {
+            Teacher userWithType = (Teacher) request.getSession().getAttribute("userWithType");
+            String courseName = "null";
+            Course course = courseService.findCourseByTid(userWithType.getTid());
+            if (course != null) {
+                courseName = course.getName();
+            }
+            request.getSession().setAttribute("courseName", courseName);
             model.setViewName("teacher/selfInformation");
         }
         if (type == 6) {
