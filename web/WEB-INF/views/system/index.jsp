@@ -17,12 +17,25 @@
     <script type="text/javascript">
         var _menus = {
             "menus": [
+                <c:if test="${user.type == 1}">
+                {
+                    "menuid": "4", "icon": "", "menuname": "后台管理",
+                    "menus": [
+
+                        {"menuid": "41", "menuname": "用户列表", "icon": "icon-exam", "url": "../user/list"},
+                        {"menuid": "42", "menuname": "负责人列表", "icon": "icon-exam", "url": "../leader/list"},
+                        {"menuid": "43", "menuname": "课程主任列表", "icon": "icon-exam", "url": "../CourseLeader/list"},
+                        {"menuid": "44", "menuname": "老师列表", "icon": "icon-exam", "url": ""},
+                        {"menuid": "45", "menuname": "学生列表", "icon": "icon-exam", "url": ""},
+                    ]
+                },
+                </c:if>
                 <c:if test="${user.type != 6}">
                 {
                     "menuid": "1", "icon": "", "menuname": "用户信息",
                     "menus": [
                         <c:if test="${user.type == 1}">
-                        {"menuid": "11", "menuname": "用户列表", "icon": "icon-exam", "url": "../user/list"},
+                        // {"menuid": "11", "menuname": "用户列表", "icon": "icon-exam", "url": "../user/list"},
                         // {"menuid": "12", "menuname": "系主任列表", "icon": "icon-exam", "url": ""},
                         </c:if>
                         <c:if test="${user.type == 2 || user.type == 3 || user.type == 4 }">
@@ -59,7 +72,7 @@
                         <c:if test="${user.type == 6}">
                         {"menuid": "26", "menuname": "方向介绍", "icon": "icon-exam", "url": "../BranchIntroduce/introduce"},
                         {"menuid": "24", "menuname": "方向选报", "icon": "icon-exam", "url": "../BranchSelection/select"},
-                        {"menuid": "25", "menuname": "课程信息", "icon": "icon-exam", "url": ""}
+                        {"menuid": "25", "menuname": "课程信息", "icon": "icon-exam", "url": "../CourseIntroduce/select"}
                         </c:if>
                     ]
                 },

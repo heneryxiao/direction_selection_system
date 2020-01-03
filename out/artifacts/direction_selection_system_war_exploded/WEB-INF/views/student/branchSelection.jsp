@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>课程列表</title>
+    <title>方向列表</title>
     <link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="../easyui/css/demo.css">
@@ -38,14 +38,6 @@
                     {field:'chk',checkbox: true,width:50},
                     {field: 'branchid', title: '方向编号', width: 80, sortable: true},
                     {field: 'name', title: '方向名称', width: 80},
-                    {field:'course',
-                        formatter : function(value,row,index){
-                            if (row.course){
-                                return row.course.name;
-                            } else {
-                                return value;
-                            }},
-                        title:'对应课程名称',width:80},
                     {field: 'selected', title: '已选人数', width: 80},
                     {field: 'limited', title: '限选人数', width: 80},
                 ]],

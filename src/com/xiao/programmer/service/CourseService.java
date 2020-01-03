@@ -1,8 +1,7 @@
 package com.xiao.programmer.service;
 
-import com.xiao.programmer.dao.CourseMapper;
-import com.xiao.programmer.entity.Branch;
-import com.xiao.programmer.entity.Course;
+import com.xiao.programmer.dao.extend.CourseMapperExtend;
+import com.xiao.programmer.entity.origin.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +14,7 @@ import java.util.List;
 @Repository
 public class CourseService {
     @Autowired
-    private CourseMapper courseMapper;
+    private CourseMapperExtend courseMapper;
     public Course findById(String cid){
         return courseMapper.selectByPrimaryKey(cid);
     }

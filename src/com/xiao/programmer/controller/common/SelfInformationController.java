@@ -1,6 +1,7 @@
 package com.xiao.programmer.controller.common;
 
-import com.xiao.programmer.entity.*;
+import com.xiao.programmer.entity.extend.EncodingTool;
+import com.xiao.programmer.entity.origin.*;
 import com.xiao.programmer.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

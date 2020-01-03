@@ -1,7 +1,7 @@
 package com.xiao.programmer.controller.branch;
 
-import com.xiao.programmer.entity.Branch;
-import com.xiao.programmer.entity.Course;
+import com.xiao.programmer.entity.origin.Branch;
+import com.xiao.programmer.entity.origin.Course;
 import com.xiao.programmer.service.BranchService;
 import com.xiao.programmer.service.CourseService;
 import org.apache.commons.lang.StringUtils;
@@ -73,11 +73,11 @@ public class branchListController {
             ret.put("msg", "方向名称不能为空!");
             return ret;
         }
-        if (StringUtils.isEmpty(branch.getCourseid())) {
-            ret.put("type", "error");
-            ret.put("msg", "涉及课程ID不能为空!");
-            return ret;
-        }
+//        if (StringUtils.isEmpty(branch.getCourseid())) {
+//            ret.put("type", "error");
+//            ret.put("msg", "涉及课程ID不能为空!");
+//            return ret;
+//        }
         Branch existBranch = branchService.findById(branch.getBranchid());
         if (existBranch != null) {
             ret.put("type", "error");
@@ -90,12 +90,12 @@ public class branchListController {
             ret.put("msg", "该方向名称已存在");
             return ret;
         }
-        Course existCourse = courseService.findById(branch.getCourseid());
-        if (existCourse == null) {
-            ret.put("type", "error");
-            ret.put("msg", "所涉及的课程不存在");
-            return ret;
-        }
+//        Course existCourse = courseService.findById(branch.getCourseid());
+//        if (existCourse == null) {
+//            ret.put("type", "error");
+//            ret.put("msg", "所涉及的课程不存在");
+//            return ret;
+//        }
 
         //添加并判断
         if (branchService.add(branch) <= 0) {
@@ -128,11 +128,11 @@ public class branchListController {
             ret.put("msg", "方向名称不能为空!");
             return ret;
         }
-        if (StringUtils.isEmpty(branch.getCourseid())) {
-            ret.put("type", "error");
-            ret.put("msg", "涉及课程ID不能为空!");
-            return ret;
-        }
+//        if (StringUtils.isEmpty(branch.getCourseid())) {
+//            ret.put("type", "error");
+//            ret.put("msg", "涉及课程ID不能为空!");
+//            return ret;
+//        }
         if (branch.getLimited() <= 0) {
             ret.put("type", "error");
             ret.put("msg", "限制人人数不能小于等于0！");
@@ -144,12 +144,12 @@ public class branchListController {
             ret.put("msg", "限制人人数不能小于现已选人数！");
             return ret;
         }
-        Course existCourse = courseService.findById(branch.getCourseid());
-        if (existCourse == null) {
-            ret.put("type", "error");
-            ret.put("msg", "所涉及的课程不存在");
-            return ret;
-        }
+//        Course existCourse = courseService.findById(branch.getCourseid());
+//        if (existCourse == null) {
+//            ret.put("type", "error");
+//            ret.put("msg", "所涉及的课程不存在");
+//            return ret;
+//        }
         Branch existBranch = branchService.selectByName(branch.getName());
         if (existBranch != null) {
             Branch isNowBranch = branchService.findById(branch.getBranchid());

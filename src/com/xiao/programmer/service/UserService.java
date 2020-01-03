@@ -1,7 +1,7 @@
 package com.xiao.programmer.service;
 
-import com.xiao.programmer.dao.UserMapper;
-import com.xiao.programmer.entity.User;
+import com.xiao.programmer.dao.extend.UserMapperExtend;
+import com.xiao.programmer.entity.origin.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +16,7 @@ import java.util.Map;
 public class UserService {
 
     @Autowired
-    private UserMapper userMapper;
+    private UserMapperExtend userMapper;
 
     //根据id查找
     public User findById(String uid) {

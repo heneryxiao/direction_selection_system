@@ -1,7 +1,7 @@
 package com.xiao.programmer.controller.student;
 
-import com.xiao.programmer.entity.Student;
-import com.xiao.programmer.entity.User;
+import com.xiao.programmer.entity.origin.Student;
+import com.xiao.programmer.entity.origin.User;
 import com.xiao.programmer.service.BranchService;
 import com.xiao.programmer.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +52,6 @@ public class SelectInformationController {
     @RequestMapping(value = "/quit", method = RequestMethod.GET)
     public ModelAndView quit(ModelAndView model, HttpServletRequest request) {
         Student student = (Student) request.getSession().getAttribute("userWithType");
-        System.out.println(student);
         //获取学号置空选报信息
         String sid = student.getSid();
         //获取选报信息置用于已选人数减一

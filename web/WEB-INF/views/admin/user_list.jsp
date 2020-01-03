@@ -11,9 +11,8 @@
 	<script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="../easyui/js/validateExtends.js"></script>
 	<script type="text/javascript">
-	$(function() {	
+	$(function() {
 		var table;
-		
 		//datagrid初始化 
 	    $('#dataList').datagrid({ 
 	        title:'用户列表', 
@@ -23,26 +22,25 @@
 	        fit: true,//自动大小 
 	        method: "post",
 	        url:"get_list?t="+new Date().getTime(),
-	        idField:'courseid',
+	        idField:'uid', 
 	        singleSelect:false,//是否单选 
 	        pagination:true,//分页控件 
 	        rownumbers:true,//行号 
-	        sortName:'courseid',
+	        sortName:'uid',
 	        sortOrder:'DESC', 
 	        remoteSort: false,
-	        columns: [[
+	        columns: [[  
 				{field:'chk',checkbox: true,width:50},
-				{field: 'courseid', title: '课程编号', width: 80, sortable: true},
-				{field: 'name', title: '课程名称', width: 80},
-				{field: 'branchid', title: '所属方向ID', width: 80},
-
+ 		        {field:'uid',title:'用户名',sortable: true,width:150},
+ 		        {field:'password',title:'密码',width:100},
+ 		        {field:'type',title:'type',width:100,sortable: true},
 	 		]], 
 	        toolbar: "#toolbar"
 	    }); 
 	    //设置分页控件 
 	    var p = $('#dataList').datagrid('getPager'); 
 	    $(p).pagination({ 
-	        pageSize: 10,//每页显示的记录条数，默认为10 
+	        pageSize: 10,//每页显示的记录条数，默认为10
 	        pageList: [10,20,30,50,100],//可以设置每页记录条数的列表 
 	        beforePageText: '第',//页数文本框前显示的汉字 
 	        afterPageText: '页    共 {pages} 页', 
@@ -63,6 +61,8 @@
 		    	$("#editDialog").dialog("open");
             }
 	    });
+	    
+	    
 	    //删除
 	    $("#delete").click(function(){
 	    	var selectRows = $("#dataList").datagrid("getSelections");
@@ -71,16 +71,17 @@
             	$.messager.alert("消息提醒", "请选择数据进行删除!", "warning");
             } else{
             	var ids = [];
-            	$(selectRows).each(function(i, row){
-            		ids[i] = row.courseid;
-            	});
-            	$.messager.confirm("消息提醒", "将删除与课程相关的所有数据，确认继续？", function(r){
+            	//console.log(selectRows);
+            	for(var i=0;i<selectLength;i++){
+            		ids[i] = selectRows[i].uid
+            	}
+            	$.messager.confirm("消息提醒", "将删除与用户相关的所有数据，确认继续？", function(r){
             		if(r){
             			$.ajax({
 							type: "post",
 							url: "delete",
 							data: {ids: ids},
-							dataType:'json',
+							dataType:'json',//不加的话后台会识别成字符串
 							success: function(data){
 								if(data.type == "success"){
 									$.messager.alert("消息提醒","删除成功!","info");
@@ -100,8 +101,8 @@
 	    
 	  	//设置添加窗口
 	    $("#addDialog").dialog({
-	    	title: "添加方向",
-	    	width: 350,
+	    	title: "添加用户",
+	    	width: 400,
 	    	height: 250,
 	    	iconCls: "icon-add",
 	    	modal: true,
@@ -116,14 +117,13 @@
 					plain: true,
 					iconCls:'icon-add',
 					handler:function(){
-						//检查文本框是否有内容
 						var validate = $("#addForm").form("validate");
 						if(!validate){
 							$.messager.alert("消息提醒","请检查你输入的数据!","warning");
 							return;
-						}
-						else{
+						} else{
 							var data = $("#addForm").serialize();
+							
 							$.ajax({
 								type: "post",
 								url: "add",
@@ -135,8 +135,9 @@
 										//关闭窗口
 										$("#addDialog").dialog("close");
 										//清空原表格数据
-										$("#add_username").textbox('setValue', "");
+										$("#add_uid").textbox('setValue', "");
 										$("#add_password").textbox('setValue', "");
+										$("#add_type").textbox('setValue', "");
 										//重新刷新页面数据
 							  			$('#dataList').datagrid("reload");
 										
@@ -151,9 +152,11 @@
 				},
 			],
 			onClose: function(){
-				$("#add_courseId").textbox('setValue', "");
-				$("#add_name").textbox('setValue', "");
-				$("#add_branchId").textbox('setValue', "");
+				$("#add_uid").textbox('setValue', "");
+				$("#add_password").textbox('setValue', "");
+				$("#add_type").textbox('setValue', "");
+				
+				$(table).find(".chooseTr").remove();
 			}
 	    });
 	  	
@@ -179,10 +182,10 @@
 						if(!validate){
 							$.messager.alert("消息提醒","请检查你输入的数据!","warning");
 							return;
-						}
-						else{
-							var data = $("#editForm").serialize();
+						} else{
 							
+							var data = $("#editForm").serialize();
+							console.log(data);
 							$.ajax({
 								type: "post",
 								url: "edit",
@@ -193,8 +196,6 @@
 										$.messager.alert("消息提醒","修改成功!","info");
 										//关闭窗口
 										$("#editDialog").dialog("close");
-										
-										//重新刷新页面数据
 							  			$('#dataList').datagrid("reload");
 							  			$('#dataList').datagrid("uncheckAll");
 										
@@ -208,22 +209,69 @@
 					}
 				},
 			],
+			
 			onBeforeOpen: function(){
 				var selectRow = $("#dataList").datagrid("getSelected");
 				//设置值
-				$("#edit_courseId").val(selectRow.courseid);
-				$("#edit_name").textbox('setValue', selectRow.name);
-				$("#edit_branchId").textbox('setValue', selectRow.branchid);
+				$("#edit_uid").val(selectRow.uid);
+				$("#edit_password").textbox('setValue', selectRow.password);
+				$("#edit_type").textbox('setValue', selectRow.type);
 			}
 	    });
 	   	
-	  	// //搜索按钮
-	  	// $("#search-btn").click(function(){
-	  	// 	$('#dataList').datagrid('reload',{
-		// 		username:$("#search-username").textbox('getValue')
-	  	// 	});
-	  	// });
+	    
+		//搜索按钮
+		$("#search-btn").click(function(){
+			 $('#dataList').datagrid('reload',{
+				 uid:$("#search-username").searchbox('getValue')
+			 });
+			 
+		});
 	});
+	
+	</script>
+	<script type="text/javascript">
+		
+		function uploadFile() {
+			var file = $("#upload").val();
+			file = file.substring(file.lastIndexOf('.'), file.length);
+			if (file == '') {
+				alert("上传文件不能为空！");
+			} else if (file != '.xlsx' && file != '.xls') {
+				alert("请选择正确的excel类型文件！");
+			} else {
+				ajaxFileUpload();
+			}
+		}
+		function ajaxFileUpload() {
+
+			var formData = new FormData();
+			var name = $("#upload").val();
+			formData.append("file", $("#upload")[0].files[0]);
+			formData.append("name", name);
+			$.ajax({
+				url : "excel/InputExcel.do",
+				type : "POST",
+				async : false,
+				data : formData,
+				processData : false,
+				contentType : false,
+				beforeSend : function() {
+					console.log("正在进行，请稍候");
+				},
+				success : function(e) {
+					if (e == "01") {
+						alert("导入成功");
+					} else {
+						alert("导入失败");
+					}
+				}
+			});
+		}
+
+		function OutputExce() {
+			window.location.href = "/ExcelDemo/excel/OutputExcel.do";
+		}
 	</script>
 </head>
 <body>
@@ -238,48 +286,77 @@
 		<div style="float: left;"><a id="edit" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">修改</a></div>
 			<div style="float: left;" class="datagrid-btn-separator"></div>
 		<div>
-			<a id="delete" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-some-delete',plain:true">删除</a>
-<%--			方向名称：<input id="search-username" class="easyui-textbox" />--%>
-<%--			<a id="search-btn" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">搜索</a>--%>
+		<a id="delete" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-some-delete',plain:true">删除</a>
+		用户名:<input id="search-username" class="easyui-textbox"/>	
+		<a id="search-btn" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">搜索</a>
+<%--			上传       --%>
+<%--		<tr>--%>
+<%--		    <td><input type="file" id="upload" name="upload" value="" /></td>--%>
+<%--		    <td><button οnclick="uploadFile()">上传</button></td>--%>
+<%--		    <td><button οnclick="OutputExce()">导出</button></td>--%>
+<%--		</tr>--%>
 		</div>
 	</div>
 	
 	<!-- 添加窗口 -->
-	<div id="addDialog" style="padding: 10px;">
+	<div id="addDialog" style="padding: 10px;">  
+   		<!-- 
+   		<div style=" position: absolute; margin-left: 560px; width: 250px; height: 300px; border: 1px solid #EEF4FF" id="photo">
+    		<img alt="照片" style="max-width: 250px; max-height: 300px;" title="照片" src="photo/teacher.jpg" />
+    		
+	    </div> 
+   		 -->
    		<form id="addForm" method="post">
-	    	<table id="addTable" cellpadding="8">
-	    		<tr >
-	    			<td>课程编号:</td>
+	    	<table id="addTable" cellpadding="6" >
+	    		<tr>
+	    			<td>用户名:</td>
 	    			<td>
-	    				<input id="add_courseId"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="courseid" data-options="required:true, missingMessage:'请填写课程编号'"  />
+	    				<input id="add_uid"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="uid" data-options="required:true, validType:'repeat', missingMessage:'请填写用户名'" />
 	    			</td>
 	    		</tr>
 	    		<tr>
-	    			<td>课程名称:</td>
-	    			<td><input id="add_name" style="width: 200px; height: 30px;" class="easyui-textbox" type="text" name="name" data-options="required:true, missingMessage:'请填写课程名称'"  /></td>
+	    			<td>密码:</td>
+	    			<td><input id="add_password" style="width: 200px; height: 30px;" class="easyui-textbox" type="password" name="password" data-options="required:true, missingMessage:'请填写密码'" /></td>
 	    		</tr>
-				<tr>
-					<td>所属方向名称:</td>
-					<td><input id="add_branchId" style="width: 200px; height: 30px;" class="easyui-textbox" type="text" name="branchid" data-options="required:true, missingMessage:'请填写所属方向ID'"  /></td>
-				</tr>
+	    		<tr>
+	    			<td>类型:</td>
+	    			<td><input id="add_type" style="width: 200px; height: 30px;" class="easyui-textbox" type="text" name="type" data-options="required:true, missingMessage:'输入2或3'" /></td>
+	    		</tr>
 	    	</table>
 	    </form>
 	</div>
 	
+	<!-- 设置课程 -->
+	<div id="chooseCourseDialog" style="padding: 10px">
+	   	<table cellpadding="8" >
+	   		<tr>
+	   			<td>年级：</td>
+	   			<td><input id="add_gradeList" style="width: 200px; height: 30px;" class="easyui-combobox" name="gradeid" /></td>
+	   		</tr>
+	   		<tr>
+	   			<td>班级：</td>
+	   			<td><input id="add_clazzList" style="width: 200px; height: 30px;" class="easyui-combobox" name="clazzid" /></td>
+	   		</tr>
+	   		<tr>
+	   			<td>课程：</td>
+	   			<td><input id="add_courseList" style="width: 200px; height: 30px;" class="easyui-combobox" name="courseid" /></td>
+	   		</tr>
+	   	</table>
+	</div>
 	
 	<!-- 修改窗口 -->
 	<div id="editDialog" style="padding: 10px">
     	<form id="editForm" method="post">
-    		<input type="hidden" name="courseid" id="edit_courseId">
+			<input type="hidden" name="uid" id="edit_uid">
 	    	<table id="editTable" border=0 cellpadding="8" >
-				<tr>
-					<td>课程名称:</td>
-					<td><input id="edit_name" style="width: 200px; height: 30px;" class="easyui-textbox" type="text" name="name" data-options="required:true, missingMessage:'请填写课程名称'"  /></td>
-				</tr>
-				<tr>
-					<td>所属方向名称:</td>
-					<td><input id="edit_branchId" style="width: 200px; height: 30px;" class="easyui-textbox" type="text" name="branchid" data-options="required:true, missingMessage:'请填写所属方向ID'"  /></td>
-				</tr>
+	    		<tr>
+	    			<td>密码:</td>
+	    			<td><input id="edit_password" style="width: 200px; height: 30px;" class="easyui-textbox" type="password" name="password" data-options="required:true, missingMessage:'请填写密码'" /></td>
+	    		</tr>
+	    		<tr>
+	    			<td>类型:</td>
+	    			<td><input id="edit_type" style="width: 200px; height: 30px;" class="easyui-textbox" type="text" name="type" data-options="required:true, missingMessage:'输入2或3'" /></td>
+	    		</tr>
 	    	</table>
 	    </form>
 	</div>

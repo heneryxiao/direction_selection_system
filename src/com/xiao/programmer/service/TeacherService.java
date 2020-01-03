@@ -1,8 +1,7 @@
 package com.xiao.programmer.service;
 
-import com.xiao.programmer.dao.TeacherMapper;
-import com.xiao.programmer.entity.Teacher;
-import com.xiao.programmer.entity.User;
+import com.xiao.programmer.dao.extend.TeacherMapperExtend;
+import com.xiao.programmer.entity.origin.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +15,7 @@ import java.util.Map;
 @Repository
 public class TeacherService {
     @Autowired
-    private TeacherMapper teacherMapper;
+    private TeacherMapperExtend teacherMapper;
 
     public Teacher findById(String tid){
         return teacherMapper.selectByPrimaryKey(tid);

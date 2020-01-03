@@ -1,7 +1,7 @@
 package com.xiao.programmer.service;
 
-import com.xiao.programmer.dao.BranchMapper;
-import com.xiao.programmer.entity.Branch;
+import com.xiao.programmer.dao.extend.BranchMapperExtend;
+import com.xiao.programmer.entity.origin.Branch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public class BranchService {
     @Autowired
-    private BranchMapper branchMapper;
+    private BranchMapperExtend branchMapper;
 
     public List<Branch> getList() {
         return branchMapper.selectByExample(null);
@@ -58,10 +58,4 @@ public class BranchService {
     public int delete(String bid){
         return branchMapper.deleteByPrimaryKey(bid);
     }
-
-    //带上课程信息的查询列表
-    public List<Branch> getListBySIdWithCourse() {
-        return branchMapper.getListBySIdWithCourse();
-    }
-
 }

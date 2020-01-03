@@ -1,8 +1,7 @@
 package com.xiao.programmer.controller.student;
 
-import com.xiao.programmer.entity.Page;
+import com.xiao.programmer.entity.extend.Page;
 import com.xiao.programmer.service.StudentService;
-import com.xiao.programmer.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

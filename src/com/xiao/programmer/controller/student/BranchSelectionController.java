@@ -1,6 +1,6 @@
 package com.xiao.programmer.controller.student;
 
-import com.xiao.programmer.entity.Student;
+import com.xiao.programmer.entity.origin.Student;
 import com.xiao.programmer.service.BranchService;
 import com.xiao.programmer.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +38,7 @@ public class BranchSelectionController {
     @ResponseBody
     public Map<String, Object> get_list() {
         Map<String, Object> ret = new HashMap<>();
-        ret.put("rows", branchService.getListBySIdWithCourse());
+        ret.put("rows", branchService.getList());
         ret.put("total", 10);
         return ret;
 

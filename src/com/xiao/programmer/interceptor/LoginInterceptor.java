@@ -1,7 +1,7 @@
 package com.xiao.programmer.interceptor;
 
 
-import com.xiao.programmer.entity.User;
+import com.xiao.programmer.entity.origin.User;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 

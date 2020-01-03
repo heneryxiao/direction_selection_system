@@ -1,8 +1,7 @@
 package com.xiao.programmer.service;
 
-import com.xiao.programmer.dao.StudentMapper;
-import com.xiao.programmer.entity.Student;
-import com.xiao.programmer.entity.Teacher;
+import com.xiao.programmer.dao.extend.StudentMapperExtend;
+import com.xiao.programmer.entity.origin.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +15,7 @@ import java.util.Map;
 @Repository
 public class StudentService {
     @Autowired
-    private StudentMapper studentMapper;
+    private StudentMapperExtend studentMapper;
 
     public Student findById(String sid) {
         return studentMapper.selectByPrimaryKey(sid);
@@ -53,7 +52,6 @@ public class StudentService {
     public List<Student> findListWithBranch(Map queryMap) {
         return studentMapper.findListWithBranch(queryMap);
     }
-
     //根据老师id查询所教的学生列表(附上方向信息)
     public List<Student> selectStudentListWithBranchByTid(String tid) {
         return studentMapper.selectStudentListWithBranchByTid(tid);

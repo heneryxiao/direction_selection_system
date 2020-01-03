@@ -1,7 +1,7 @@
 package com.xiao.programmer.controller.system;
 
 import com.github.pagehelper.util.StringUtil;
-import com.xiao.programmer.entity.*;
+import com.xiao.programmer.entity.origin.*;
 import com.xiao.programmer.service.*;
 import com.xiao.programmer.util.CpachaUtil;
 import org.springframework.beans.factory.annotation.Autowired;
