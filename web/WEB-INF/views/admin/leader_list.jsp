@@ -31,8 +31,8 @@
                 remoteSort: false,
                 columns: [[
                     {field: 'chk', checkbox: true, width: 50},
-                    {field: 'lid', title: '用户名', sortable: true, width: 150},
-                    {field: 'name', title: '姓名', width: 100},
+                    {field: 'lid', title: '用户名', sortable: true, width: 80},
+                    {field: 'name', title: '姓名', width: 80},
                     {field: 'gender', title: '性别', width: 50},
                     {field: 'profession', title: '专业', width: 100},
                     {field: 'branchid', title: '方向ID', width: 80, sortable: true},
@@ -290,26 +290,6 @@
     </form>
 </div>
 
-<!-- 设置课程 -->
-<div id="chooseCourseDialog" style="padding: 10px">
-    <table cellpadding="8">
-        <tr>
-            <td>年级：</td>
-            <td><input id="add_gradeList" style="width: 200px; height: 30px;" class="easyui-combobox" name="gradeid"/>
-            </td>
-        </tr>
-        <tr>
-            <td>班级：</td>
-            <td><input id="add_clazzList" style="width: 200px; height: 30px;" class="easyui-combobox" name="clazzid"/>
-            </td>
-        </tr>
-        <tr>
-            <td>课程：</td>
-            <td><input id="add_courseList" style="width: 200px; height: 30px;" class="easyui-combobox" name="courseid"/>
-            </td>
-        </tr>
-    </table>
-</div>
 
 <!-- 修改窗口 -->
 <div id="editDialog" style="padding: 10px">

@@ -1,6 +1,7 @@
 package com.xiao.programmer.service;
 
 import com.xiao.programmer.dao.extend.TeacherMapperExtend;
+import com.xiao.programmer.entity.origin.CourseLeader;
 import com.xiao.programmer.entity.origin.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -34,5 +35,20 @@ public class TeacherService {
     //获取老师个数
     public long getTotal() {
         return teacherMapper.countByExample(null);
+    }
+
+    //添加用户的操作
+    public int add(Teacher teacher) {
+        return teacherMapper.insertSelective(teacher);
+    }
+
+    //编辑修改(带空值的编辑)
+    public int editWithNull(Teacher teacher) {
+        return teacherMapper.updateByPrimaryKey(teacher);
+    }
+
+    //删除
+    public int delete(String tid){
+        return teacherMapper.deleteByPrimaryKey(tid);
     }
 }

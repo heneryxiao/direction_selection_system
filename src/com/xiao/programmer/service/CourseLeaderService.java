@@ -43,4 +43,19 @@ public class CourseLeaderService {
     public long getTotal() {
         return courseLeaderMapper.countByExample(null);
     }
+
+    //添加用户的操作
+    public int add(CourseLeader courseLeader) {
+        return courseLeaderMapper.insertSelective(courseLeader);
+    }
+
+    //编辑修改(带空值的编辑)
+    public int editWithNull(CourseLeader courseLeader) {
+        return courseLeaderMapper.updateByPrimaryKey(courseLeader);
+    }
+
+    //删除
+    public int delete(String cid){
+        return courseLeaderMapper.deleteByPrimaryKey(cid);
+    }
 }

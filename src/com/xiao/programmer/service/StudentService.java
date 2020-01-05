@@ -1,6 +1,8 @@
 package com.xiao.programmer.service;
 
 import com.xiao.programmer.dao.extend.StudentMapperExtend;
+import com.xiao.programmer.entity.origin.CourseLeader;
+import com.xiao.programmer.entity.origin.Leader;
 import com.xiao.programmer.entity.origin.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -55,6 +57,21 @@ public class StudentService {
     //根据老师id查询所教的学生列表(附上方向信息)
     public List<Student> selectStudentListWithBranchByTid(String tid) {
         return studentMapper.selectStudentListWithBranchByTid(tid);
+    }
+
+    //添加用户的操作studentMapper
+    public int add(Student student) {
+        return studentMapper.insertSelective(student);
+    }
+
+    //编辑修改(带空值的编辑)
+    public int editWithNull(Student student) {
+        return studentMapper.updateByPrimaryKey(student);
+    }
+
+    //删除
+    public int delete(String sid){
+        return studentMapper.deleteByPrimaryKey(sid);
     }
 
 }

@@ -24,9 +24,9 @@
 
                         {"menuid": "41", "menuname": "用户列表", "icon": "icon-exam", "url": "../user/list"},
                         {"menuid": "42", "menuname": "负责人列表", "icon": "icon-exam", "url": "../leader/list"},
-                        {"menuid": "43", "menuname": "课程主任列表", "icon": "icon-exam", "url": "../CourseLeader/list"},
-                        {"menuid": "44", "menuname": "老师列表", "icon": "icon-exam", "url": ""},
-                        {"menuid": "45", "menuname": "学生列表", "icon": "icon-exam", "url": ""},
+                        {"menuid": "43", "menuname": "课程主任列表", "icon": "icon-exam", "url": "../courseLeader/list"},
+                        {"menuid": "44", "menuname": "老师列表", "icon": "icon-exam", "url": "../teacher/list"},
+                        {"menuid": "45", "menuname": "学生列表", "icon": "icon-exam", "url": "../student/list"},
                     ]
                 },
                 </c:if>
