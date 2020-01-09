@@ -30,21 +30,11 @@
                     ]
                 },
                 </c:if>
-                <c:if test="${user.type != 6}">
+                <c:if test="${user.type != 6 && user.type != 5}">
                 {
                     "menuid": "1", "icon": "", "menuname": "用户信息",
                     "menus": [
-                        <c:if test="${user.type == 1}">
-                        // {"menuid": "11", "menuname": "用户列表", "icon": "icon-exam", "url": "../user/list"},
-                        // {"menuid": "12", "menuname": "系主任列表", "icon": "icon-exam", "url": ""},
-                        </c:if>
                         <c:if test="${user.type == 2 || user.type == 3 || user.type == 4 }">
-                        <c:if test="${user.type == 2}">
-                        // {"menuid": "13", "menuname": "专业负责人列表", "icon": "icon-exam", "url": ""},
-                        </c:if>
-                        <c:if test="${user.type == 2 || user.type == 3}">
-                        // {"menuid": "14", "menuname": "方向负责人列表", "icon": "icon-exam", "url": ""},
-                        </c:if>
                         {"menuid": "15", "menuname": "老师列表", "icon": "icon-exam", "url": "../teacherList/list"},
                         {"menuid": "16", "menuname": "学生列表", "icon": "icon-exam", "url": "../studentList/list"},
                         </c:if>

@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class BranchIntroduceController {
     @RequestMapping(value = "/introduce", method = RequestMethod.GET)
     public ModelAndView introduce(ModelAndView model) {
+//        model.setViewName("student/branchIntroduce");
         model.setViewName("student/branchIntroduce");
         return model;
     }

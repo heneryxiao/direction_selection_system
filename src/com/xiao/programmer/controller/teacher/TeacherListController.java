@@ -44,7 +44,6 @@ public class TeacherListController {
         queryMap.put("pageSize", page.getRows());
         ret.put("rows", teacherService.findList(queryMap));
         ret.put("total", teacherService.getTotal());
-        System.out.println(ret.toString() + "   " + queryMap.toString());
         return ret;
     }
 }
