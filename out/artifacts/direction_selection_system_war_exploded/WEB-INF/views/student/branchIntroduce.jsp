@@ -46,7 +46,7 @@
             <a class="nav-link" href="#feedback-section" style="width: 100px">老师介绍</a>
           </li>
           <li class="nav-item btn-contact-us pl-4 pl-lg-0">
-            <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">前往选课</button>
+            <button class="btn btn-info" data-toggle="modal" onclick="location.href='../BranchSelection/select'">前往选课</button>
           </li>
         </ul>
       </div>
@@ -58,105 +58,105 @@
       <h1 class="font-weight-semibold">软件工程专业共有<br>四个方向选择</h1>
       <h6 class="font-weight-normal text-muted pb-3">根据自己的兴趣爱好，选择一个最合适你的专业方向吧！</h6>
       <div>
-        <button class="btn btn-opacity-light mr-1">前往选择</button>
-        <button class="btn btn-opacity-success ml-1">了解更多</button>
+        <button class="btn btn-opacity-light mr-1" onclick="location.href='../BranchSelection/select'">前往选择</button>
+        <button class="btn btn-opacity-success ml-1" onclick="location.href='../CourseIntroduce/select'">了解课程</button>
       </div>
       <img src="../ui/images/Group171.svg" alt="" class="img-fluid">
     </div>
   </div>
   <div class="content-wrapper">
-    <div class="container">
-      <section class="case-studies" id="case-studies-section">
-        <div class="row grid-margin">
-          <div class="col-12 text-center pb-5">
-            <h2>四大专业方向</h2>
-            <h6 class="section-subtitle text-muted">只要勤学苦练，在任何领域都能发光发亮</h6>
-          </div>
-          <div class="col-12 col-md-6 col-lg-3 stretch-card mb-3 mb-lg-0" data-aos="zoom-in">
-            <div class="card color-cards">
-              <div class="card-body p-0">
-                <div class="bg-primary text-center card-contents">
-                  <div class="card-image">
-                    <img src="../ui/images/Group95.svg" class="case-studies-card-img" alt="">
+      <div class="container">
+          <section class="case-studies" id="case-studies-section">
+              <div class="row grid-margin">
+                  <div class="col-12 text-center pb-5">
+                      <h2>四大专业方向</h2>
+                      <h6 class="section-subtitle text-muted">只要勤学苦练，在任何领域都能发光发亮</h6>
                   </div>
-                  <div class="card-desc-box d-flex align-items-center justify-content-around">
-                    <div>
-                      <h6 class="text-white pb-2 px-3">主修：移动平台开发技术、移动互联网、移动终端跨平台等</h6>
-                      <button class="btn btn-white">更多课程信息</button>
-                    </div>
+                  <div class="col-12 col-md-6 col-lg-3 stretch-card mb-3 mb-lg-0" data-aos="zoom-in">
+                      <div class="card color-cards">
+                          <div class="card-body p-0">
+                              <div class="bg-primary text-center card-contents">
+                                  <div class="card-image">
+                                      <img src="../ui/images/Group95.svg" class="case-studies-card-img" alt="">
+                                  </div>
+                                  <div class="card-desc-box d-flex align-items-center justify-content-around">
+                                      <div>
+                                          <h6 class="text-white pb-2 px-3">主修：移动平台开发技术、移动互联网、移动终端跨平台等</h6>
+                                          <button class="btn btn-white" onclick="location.href='../CourseIntroduce/select'">更多课程信息</button>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="card-details text-center pt-4">
+                                  <h6 class="m-0 pb-1">移动开发</h6>
+                                  <p>移动开发也称为手机开发，或叫做移动互联网开发。是指以手机、PDA、UMPC等便携终端为基础，进行相应的开发工作，由于这些随身设备基本都采用无线上网的方式，因此，业内也称作为无线开发。</p>
+                              </div>
+                          </div>
+                      </div>
                   </div>
-                </div>
-                <div class="card-details text-center pt-4">
-                  <h6 class="m-0 pb-1">移动开发</h6>
-                  <p>移动开发也称为手机开发，或叫做移动互联网开发。是指以手机、PDA、UMPC等便携终端为基础，进行相应的开发工作，由于这些随身设备基本都采用无线上网的方式，因此，业内也称作为无线开发。</p>
-                </div>
+                  <div class="col-12 col-md-6 col-lg-3 stretch-card mb-3 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
+                      <div class="card color-cards">
+                          <div class="card-body p-0">
+                              <div class="bg-warning text-center card-contents">
+                                  <div class="card-image">
+                                      <img src="../ui/images/Group108.svg" class="case-studies-card-img" alt="">
+                                  </div>
+                                  <div class="card-desc-box d-flex align-items-center justify-content-around">
+                                      <div>
+                                          <h6 class="text-white pb-2 px-3">主修：功能测试、性能测试、测试管理等</h6>
+                                          <button class="btn btn-white" onclick="location.href='../CourseIntroduce/select'">更多课程信息</button>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="card-details text-center pt-4">
+                                  <h6 class="m-0 pb-1">软件测试</h6>
+                                  <p>软件测试描述一种用来促进鉴定软件的正确性、完整性、安全性和质量的过程。换句话说，软件测试是一种实际输出与预期输出之间的审核或者比较过程。</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-3 stretch-card mb-3 mb-lg-0" data-aos="zoom-in" data-aos-delay="400">
+                      <div class="card color-cards">
+                          <div class="card-body p-0">
+                              <div class="bg-violet text-center card-contents">
+                                  <div class="card-image">
+                                      <img src="../ui/images/Group126.svg" class="case-studies-card-img" alt="">
+                                  </div>
+                                  <div class="card-desc-box d-flex align-items-center justify-content-around">
+                                      <div>
+                                          <h6 class="text-white pb-2 px-3">主修：计算机动画、游戏程序设计综合实践、机器学习等</h6>
+                                          <button class="btn btn-white" onclick="location.href='../CourseIntroduce/select'">更多课程信息</button>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="card-details text-center pt-4">
+                                  <h6 class="m-0 pb-1">游戏开发</h6>
+                                  <p>游戏开发指利用计算机编程语言，如C编程语言、C++、java等，编写计算机、手机或游戏机上的游戏。目前流行的游戏编程语言为C++编程语言，游戏编程接口为DirectX9.0、OpenGL和SDL(Simple DirectMedia Layer)等。</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-3 stretch-card" data-aos="zoom-in" data-aos-delay="600">
+                      <div class="card color-cards">
+                          <div class="card-body p-0">
+                              <div class="bg-success text-center card-contents">
+                                  <div class="card-image">
+                                      <img src="../ui/images/Group115.svg" class="case-studies-card-img" alt="">
+                                  </div>
+                                  <div class="card-desc-box d-flex align-items-center justify-content-around">
+                                      <div>
+                                          <h6 class="text-white pb-2 px-3">主修：大数据处理程序语言、大数据处理技术、Linux程序设计基础等</h6>
+                                          <button class="btn btn-white" onclick="location.href='../CourseIntroduce/select'">更多课程信息</button>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="card-details text-center pt-4">
+                                  <h6 class="m-0 pb-1">大数据</h6>
+                                  <p>是指无法在一定时间范围内用常规软件工具进行捕捉、管理和处理的数据集合，是需要新处理模式才能具有更强的决策力、洞察发现力和流程优化能力的海量、高增长率和多样化的信息资产。</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
               </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-lg-3 stretch-card mb-3 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="card color-cards">
-              <div class="card-body p-0">
-                <div class="bg-warning text-center card-contents">
-                  <div class="card-image">
-                    <img src="../ui/images/Group108.svg" class="case-studies-card-img" alt="">
-                  </div>
-                  <div class="card-desc-box d-flex align-items-center justify-content-around">
-                    <div>
-                      <h6 class="text-white pb-2 px-3">主修：功能测试、性能测试、测试管理等</h6>
-                      <button class="btn btn-white">更多课程信息</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-details text-center pt-4">
-                  <h6 class="m-0 pb-1">软件测试</h6>
-                  <p>软件测试描述一种用来促进鉴定软件的正确性、完整性、安全性和质量的过程。换句话说，软件测试是一种实际输出与预期输出之间的审核或者比较过程。</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-lg-3 stretch-card mb-3 mb-lg-0" data-aos="zoom-in" data-aos-delay="400">
-            <div class="card color-cards">
-              <div class="card-body p-0">
-                <div class="bg-violet text-center card-contents">
-                  <div class="card-image">
-                    <img src="../ui/images/Group126.svg" class="case-studies-card-img" alt="">
-                  </div>
-                  <div class="card-desc-box d-flex align-items-center justify-content-around">
-                    <div>
-                      <h6 class="text-white pb-2 px-3">主修：计算机动画、游戏程序设计综合实践、机器学习等</h6>
-                      <button class="btn btn-white">更多课程信息</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-details text-center pt-4">
-                  <h6 class="m-0 pb-1">游戏开发</h6>
-                  <p>游戏开发指利用计算机编程语言，如C编程语言、C++、java等，编写计算机、手机或游戏机上的游戏。目前流行的游戏编程语言为C++编程语言，游戏编程接口为DirectX9.0、OpenGL和SDL(Simple DirectMedia Layer)等。</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-lg-3 stretch-card" data-aos="zoom-in" data-aos-delay="600">
-            <div class="card color-cards">
-              <div class="card-body p-0">
-                <div class="bg-success text-center card-contents">
-                  <div class="card-image">
-                    <img src="../ui/images/Group115.svg" class="case-studies-card-img" alt="">
-                  </div>
-                  <div class="card-desc-box d-flex align-items-center justify-content-around">
-                    <div>
-                      <h6 class="text-white pb-2 px-3">主修：大数据处理程序语言、大数据处理技术、Linux程序设计基础等</h6>
-                      <button class="btn btn-white">更多课程信息</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-details text-center pt-4">
-                  <h6 class="m-0 pb-1">大数据</h6>
-                  <p>是指无法在一定时间范围内用常规软件工具进行捕捉、管理和处理的数据集合，是需要新处理模式才能具有更强的决策力、洞察发现力和流程优化能力的海量、高增长率和多样化的信息资产。</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
       <section class="features-overview" id="features-section" >
         <div class="content-header">
