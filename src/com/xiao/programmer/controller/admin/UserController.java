@@ -103,9 +103,10 @@ public class UserController {
 			ret.put("msg", "类型不能为空");
 			return ret;
 		}
-		if (!(user.getType() instanceof Integer)) {
+
+		if (user.getType() < 1 || user.getType() > 6) {
 			ret.put("type", "error");
-			ret.put("msg", "类型不为数字!");
+			ret.put("msg", "类型只能输入1-6");
 			return ret;
 		}
 
@@ -185,7 +186,11 @@ public class UserController {
 			ret.put("msg", "类型不能为空");
 			return ret;
 		}
-		System.out.println(user.toString());
+		if (user.getType() < 1 || user.getType() > 6) {
+			ret.put("type", "error");
+			ret.put("msg", "类型只能输入1-6");
+			return ret;
+		}
 		if (userService.edit(user) <= 0) {
 			ret.put("type", "error");
 			ret.put("msg", "修改失败");

@@ -77,7 +77,7 @@
             <div class="row cl">
                 <label class="form-label col-3"><i class="Hui-iconfont">&#xe60d;</i></label>
                 <div class="formControls col-8">
-                    <input id="uid" name="uid" type="text" placeholder="学号" class="input-text size-L">
+                    <input id="uid" name="uid" type="text" placeholder="账号" class="input-text size-L">
                 </div>
             </div>
             <div class="row cl">

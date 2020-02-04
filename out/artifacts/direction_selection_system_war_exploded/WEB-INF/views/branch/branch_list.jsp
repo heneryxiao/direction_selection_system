@@ -123,7 +123,7 @@
                                 return;
                             }
                             //判断输入的是否为数字
-                            if (isNaN(limited)) {
+                            if (!/^\d+$/.test(limited)) {
                                 $.messager.alert("消息提醒", "请输入数字!", "warning");
                                 return;
                             } else {

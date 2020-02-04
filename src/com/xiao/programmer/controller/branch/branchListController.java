@@ -104,7 +104,7 @@ public class branchListController {
             return ret;
         }
         ret.put("type", "success");
-        ret.put("msg", "学生添加成功！");
+        ret.put("msg", "添加成功！");
         return ret;
     }
 

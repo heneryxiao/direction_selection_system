@@ -118,12 +118,18 @@
 					iconCls:'icon-add',
 					handler:function(){
 						var validate = $("#addForm").form("validate");
+						var type = $("#add_type").val();
 						if(!validate){
 							$.messager.alert("消息提醒","请检查你输入的数据!","warning");
 							return;
-						} else{
+						}
+						//正则表达式，判断是否为整数
+						if(!/^\d+$/.test(type)){
+							$.messager.alert("消息提醒", "请输入整数!", "warning");
+							return;
+						}
+						else{
 							var data = $("#addForm").serialize();
-							
 							$.ajax({
 								type: "post",
 								url: "add",
@@ -179,10 +185,17 @@
 					iconCls:'icon-edit',
 					handler:function(){
 						var validate = $("#editForm").form("validate");
+						var type = $("#edit_type").val();
 						if(!validate){
 							$.messager.alert("消息提醒","请检查你输入的数据!","warning");
 							return;
-						} else{
+						}
+						//正则表达式，判断是否为整数
+						if(!/^\d+$/.test(type)){
+							$.messager.alert("消息提醒", "请输入整数!", "warning");
+							return;
+						}
+						else{
 							
 							var data = $("#editForm").serialize();
 							console.log(data);
