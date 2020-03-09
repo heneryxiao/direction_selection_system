@@ -30,7 +30,7 @@
                     ]
                 },
                 </c:if>
-                <c:if test="${user.type != 6 && user.type != 5}">
+                <c:if test="${user.type != 6 && user.type != 5 && user.type != 1}">
                 {
                     "menuid": "1", "icon": "", "menuname": "用户信息",
                     "menus": [
